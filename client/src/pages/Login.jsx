@@ -14,12 +14,18 @@ function Login() {
     password: "",
   });
 
+  useEffect(() => {
+    if (localStorage.getItem("chat-app-user")) {
+      navigate("/");
+    }
+  });
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const { password, username } = values;
     const { data } = await axios.post(login, {
       username,
-      password
+      password,
     });
     if (data.status === false) {
       toast.error(data.msg, toastoptions);

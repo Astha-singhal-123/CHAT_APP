@@ -43,6 +43,12 @@ function Register() {
     theme: "dark",
   };
 
+  useEffect(() => {
+    if (localStorage.getItem("chat-app-user")) {
+      navigate("/");
+    }
+  });
+  
   const handleValidation = () => {
     const { password, confirmpassword, username, email } = values;
     if (password !== confirmpassword) {
