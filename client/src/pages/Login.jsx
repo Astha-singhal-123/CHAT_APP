@@ -5,7 +5,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { login } from "../utils/APIroutes";
-import bcrypt from "bcryptjs";
 
 function Login() {
   const navigate = useNavigate();
@@ -76,5 +75,57 @@ function Login() {
   );
 }
 
-const Formcontainor = styled.div``;
+const Formcontainor = styled.div`height: 100vh;
+width: 100vw;
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 1rem;
+align-items: center;
+background-color: lightcoral;
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    text-transform: uppercase;
+  }
+}
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: pink;
+  gap: 0.69rem;
+  border-radius: 2rem;
+  padding: 3rem 5rem;
+  input {
+    padding: 1rem;
+    border: 0.1rem solid;
+    border-radius: 0.8rem;
+    width: 100%;
+    font-size: 1rem;
+    &:focus {
+      border: 0.1rem solid;
+      border-color: red;
+      outline: none;
+    }
+  }
+  button {
+    padding: 1rem;
+    border: 0.1rem solid;
+    border-radius: 0.8rem;
+    width: 100%;
+    font-size: 1rem;
+    text-transform: uppercase;
+    background-color: lightgreen;
+    &:hover {
+      background-color: lightblue;
+      cursor: pointer;
+    }
+  }
+  a {
+    text-transform: uppercase;
+    color: brown;
+  }
+}`;
 export default Login;

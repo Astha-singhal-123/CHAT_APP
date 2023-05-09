@@ -8,7 +8,7 @@ import { register } from "../utils/APIroutes";
 import bcrypt from "bcryptjs";
 
 function Register() {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     username: "",
     email: "",
@@ -19,17 +19,17 @@ function Register() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (handleValidation()) {
-      const { password, confirmpassword, username, email } = values;
-      const hashedpassword = await bcrypt.hash(password,10);
+      const { password, username, email } = values;
+      const hashedpassword = await bcrypt.hash(password, 10);
       const { data } = await axios.post(register, {
         username,
         email,
         hashedpassword,
       });
-      if(data.status===false){
-        toast.error(data.msg,toastoptions);
-      }else{
-        localStorage.setItem("chat-app-user",JSON.stringify(data.user));
+      if (data.status === false) {
+        toast.error(data.msg, toastoptions);
+      } else {
+        localStorage.setItem("chat-app-user", JSON.stringify(data.user));
         navigate("/");
       }
     }
@@ -48,7 +48,7 @@ function Register() {
       navigate("/");
     }
   });
-  
+
   const handleValidation = () => {
     const { password, confirmpassword, username, email } = values;
     if (password !== confirmpassword) {
@@ -114,5 +114,59 @@ function Register() {
   );
 }
 
-const Formcontainor = styled.div``;
+const Formcontainor = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  background-color: lightcoral;
+  .brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h1 {
+      text-transform: uppercase;
+    }
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    background-color: pink;
+    gap: 0.69rem;
+    border-radius: 2rem;
+    padding: 3rem 5rem;
+    input {
+      padding: 1rem;
+      border: 0.1rem solid;
+      border-radius: 0.8rem;
+      width: 100%;
+      font-size: 1rem;
+      &:focus {
+        border: 0.1rem solid;
+        border-color: red;
+        outline: none;
+      }
+    }
+    button {
+      padding: 1rem;
+      border: 0.1rem solid;
+      border-radius: 0.8rem;
+      width: 100%;
+      font-size: 1rem;
+      text-transform: uppercase;
+      background-color: lightgreen;
+      &:hover {
+        background-color: lightblue;
+        cursor: pointer;
+      }
+    }
+    a {
+      text-transform: uppercase;
+      color: brown;
+    }
+  }
+`;
 export default Register;
