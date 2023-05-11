@@ -148,6 +148,7 @@ const Formcontainor = styled.div`
         border: 0.1rem solid;
         border-color: red;
         outline: none;
+        transition: ease-in-out 0.25s;
       }
     }
     button {
@@ -161,6 +162,7 @@ const Formcontainor = styled.div`
       &:hover {
         background-color: lightblue;
         cursor: pointer;
+        transition: ease-in-out 0.25s;
       }
     }
     a {
